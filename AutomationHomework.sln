@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Outlook", "Outlook\Outlook.csproj", "{81516BAB-774A-4CFB-8350-D406A29FC01E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Outlook", "Outlook\Outlook.csproj", "{81516BAB-774A-4CFB-8350-D406A29FC01E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForTests", "ForTests\ForTests.csproj", "{900242E8-E51C-4EEC-90D1-C85445D65D79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForTests", "ForTests\ForTests.csproj", "{900242E8-E51C-4EEC-90D1-C85445D65D79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntryTasks", "EntryTasks\EntryTasks.csproj", "{46792A8C-41EF-4A4F-A391-1728C283871B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{900242E8-E51C-4EEC-90D1-C85445D65D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{900242E8-E51C-4EEC-90D1-C85445D65D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{900242E8-E51C-4EEC-90D1-C85445D65D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46792A8C-41EF-4A4F-A391-1728C283871B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46792A8C-41EF-4A4F-A391-1728C283871B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46792A8C-41EF-4A4F-A391-1728C283871B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46792A8C-41EF-4A4F-A391-1728C283871B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
