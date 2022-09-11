@@ -1,4 +1,4 @@
-﻿namespace Outlook
+﻿namespace Utils
 {
     public class TestData
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Outlook
+namespace Utils
 {
     public class Wait
     {

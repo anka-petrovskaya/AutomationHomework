@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Outlook
+namespace Repos.TestUserInfo
 {
     public static class UserCredentials
     {

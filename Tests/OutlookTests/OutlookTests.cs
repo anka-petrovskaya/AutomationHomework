@@ -1,11 +1,15 @@
-﻿using NUnit.Framework;
-using Outlook.Pages;
+﻿using Core.UI;
+using NUnit.Framework;
+using Repos.TestUserInfo;
+using Repos.UI;
+using Repos.UI.Pages;
 using System.Linq;
 using System.Threading;
+using Utils;
 
-namespace Outlook.Tests
+namespace Tests.OutlookTests
 {
-    public class Tests : BaseTest
+    public class OutlookTests : OutlookBaseTest
     {
         [OneTimeSetUp]
         public void Login()

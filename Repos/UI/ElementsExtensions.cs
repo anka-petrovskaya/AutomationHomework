@@ -1,10 +1,11 @@
-﻿using OpenQA.Selenium;
+﻿using Core.UI;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using Outlook.Pages;
+using Repos.UI.Pages;
 using System;
 using System.Collections.Generic;
 
-namespace Outlook
+namespace Repos.UI
 {
     public static class ElementsExtensions
     {

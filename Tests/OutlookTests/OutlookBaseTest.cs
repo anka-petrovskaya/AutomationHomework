@@ -1,8 +1,9 @@
-﻿using NUnit.Framework;
+﻿using Core.UI;
+using NUnit.Framework;
 
-namespace Outlook.Tests
+namespace Tests.OutlookTests
 {
-    public class BaseTest
+    public class OutlookBaseTest
     {
         [OneTimeSetUp]
         public void SetUp()

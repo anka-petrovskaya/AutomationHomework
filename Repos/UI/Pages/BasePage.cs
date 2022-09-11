@@ -3,8 +3,9 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using SeleniumExtras.WaitHelpers;
+using Core.UI;
 
-namespace Outlook.Pages
+namespace Repos.UI.Pages
 {
     public abstract class BasePage
     {

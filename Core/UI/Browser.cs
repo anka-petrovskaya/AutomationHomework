@@ -6,10 +6,11 @@ using System;
 using System.Linq;
 using System.Threading;
 
-namespace Outlook
+namespace Core.UI
 {
     public class Browser
     {
+        
         private static Browser currentInstance;
         public static Browser Instance => currentInstance ??= new Browser();
         private static IWebDriver driver;

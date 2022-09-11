@@ -1,10 +1,12 @@
-﻿using OpenQA.Selenium;
+﻿using Core.UI;
+using OpenQA.Selenium;
 using System;
 using System.Linq;
+using Utils;
 
-namespace Outlook.Pages
+namespace Repos.UI.Pages
 {
-    class MainPage : BasePage
+    public class MainPage : BasePage
     {
         private static MainPage mainPage;
         public static MainPage Instance => mainPage ??= new MainPage();

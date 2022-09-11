@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Outlook
+namespace Utils
 {
     public static class RandomHelper
     {

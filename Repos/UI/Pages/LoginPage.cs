@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
+using Repos.TestUserInfo;
 
-namespace Outlook.Pages
+namespace Repos.UI.Pages
 {
     public class LoginPage : BasePage
     {
