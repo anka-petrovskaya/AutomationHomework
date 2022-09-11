@@ -13,12 +13,12 @@ namespace Outlook.Pages
         public By ShortMenu = By.XPath("//button[@id='O365_MainLink_NavMenu']");
         public By MainMenuButton(string name) => By.XPath($"//*[@id='appLauncherMainView']//a[@aria-label='{name}']");
 
-        public void Login(string email, string password)
+        public void Login(User user)
         {
             SignInButton.Click();
-            EmailInputField.SendKeys(email);
+            EmailInputField.SendKeys(user.Email);
             SubmitButton.Click();
-            PasswordInputField.SendKeys(password);
+            PasswordInputField.SendKeys(user.Password);
             SubmitButton.Click();
             SubmitButton.Click();
             ShortMenu.Click();

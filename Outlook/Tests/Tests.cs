@@ -10,7 +10,7 @@ namespace Outlook.Tests
         [OneTimeSetUp]
         public void Login()
         {
-            LoginPage.Instance.Login("medvedev1463@gmail.com", "Sad_0310!");
+            LoginPage.Instance.Login(UserCredentials.HannaUser);
             Browser.Instance.SwitchToNextTab();
             Assert.IsTrue(MainPage.Instance.CreateMessageButton.IsVisible());
         }
