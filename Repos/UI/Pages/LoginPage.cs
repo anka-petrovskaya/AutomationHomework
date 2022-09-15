@@ -14,7 +14,7 @@ namespace Repos.UI.Pages
         public By ShortMenu = By.XPath("//button[@id='O365_MainLink_NavMenu']");
         public By MainMenuButton(string name) => By.XPath($"//*[@id='appLauncherMainView']//a[@aria-label='{name}']");
 
-        public void Login(User user)
+        public void Login(IUser user)
         {
             SignInButton.Click();
             EmailInputField.SendKeys(user.Email);
