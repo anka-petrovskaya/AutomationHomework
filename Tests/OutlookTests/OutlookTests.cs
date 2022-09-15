@@ -18,7 +18,7 @@ namespace Tests.OutlookTests
             Browser.Instance.SwitchToNextTab();
             Assert.IsTrue(MainPage.Instance.CreateMessageButton.IsVisible());
         }
-
+        
         [Test]
         [Order(1)]
         public void SaveAsDraft()
@@ -27,7 +27,7 @@ namespace Tests.OutlookTests
             var email = RandomHelper.GetEmail();
             MainPage.Instance.FillDraftMessageInfo(email, subject, "Hello World!");
             MainPage.Instance.SaveCurrentAsDraft();
-            Assert.IsTrue(MainPage.Instance.CheckMessageInFolder("Черновики", subject), "No new draft message was found");
+            Assert.IsTrue(MainPage.Instance.CheckMessageInFolder(FolderType.Drafts, subject), "No new draft message was found");
 
             var IinfoIsCorrect = MainPage.Instance.VerifyAllMessageFields(email, subject, "Hello World!");
             Assert.IsTrue(IinfoIsCorrect, "Info is incorrect");
@@ -41,8 +41,8 @@ namespace Tests.OutlookTests
             MainPage.Instance.SendMessage(subject);
             Assert.Multiple(() =>
             {
-                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder("Отправленные", subject), "The message was not found");
-                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder("Черновики", subject, false), "the message is still in the folder");
+                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder(FolderType.Sent, subject), "The message was not found");
+                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder(FolderType.Drafts, subject, false), "the message is still in the folder");
             });
         }
 
@@ -51,12 +51,12 @@ namespace Tests.OutlookTests
         public void DeleteDraft()
         {
             var subject = MainPage.Instance.CreateNewDraftsIfNoAny();
-            MainPage.Instance.FollowMessage("Черновики", subject);
+            MainPage.Instance.FollowMessage(FolderType.Drafts, subject);
             MainPage.Instance.DeleteDraft(subject);
             Assert.Multiple(() =>
             {
-                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder("Удаленные", subject), "The message was not found");
-                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder("Черновики", subject, false), "The message is still in the folder");
+                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder(FolderType.Deleted, subject), "The message was not found");
+                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder(FolderType.Drafts, subject, false), "The message is still in the folder");
             });
         }
 
@@ -65,7 +65,7 @@ namespace Tests.OutlookTests
         public void OpenDraftWithDoubleClick()
         {
             var subject = MainPage.Instance.CreateNewDraftsIfNoAny();
-            MainPage.Instance.FollowMessage("Черновики", subject);
+            MainPage.Instance.FollowMessage(FolderType.Drafts, subject);
             var before = Browser.Instance.GetDriver().WindowHandles.Count;
             MainPage.Instance.MessagePreview(subject).DoubleClick();
             var after = Browser.Instance.GetDriver().WindowHandles.Count;
@@ -77,11 +77,11 @@ namespace Tests.OutlookTests
         public void CleanUpFolder()
         {
             var subject = MainPage.Instance.CreateNewDraftsIfNoAny();
-            MainPage.Instance.CleanUpFolder("Черновики");
+            MainPage.Instance.CleanUpFolder(FolderType.Drafts);
             Assert.Multiple(() =>
             {
-                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder("Удаленные", subject), "the message is still in the folder");
-                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder("Черновики", subject, false), "The message was not found");
+                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder(FolderType.Deleted, subject), "the message is still in the folder");
+                Assert.IsTrue(MainPage.Instance.CheckMessageInFolder(FolderType.Drafts, subject, false), "The message was not found");
             });
         }
 

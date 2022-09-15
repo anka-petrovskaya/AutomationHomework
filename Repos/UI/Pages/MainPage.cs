@@ -51,16 +51,16 @@ namespace Repos.UI.Pages
         }
         public void SaveCurrentAsDraft()
         {
-            var before = GetMessagesCount("Черновики");
+            var before = GetMessagesCount(FolderType.Drafts);
             MessageActionsMenu.Click();
             MessageOption("Сохранить черновик").Click();
-            Wait.Until(() => GetMessagesCount("Черновики") != before);
+            Wait.Until(() => GetMessagesCount(FolderType.Drafts) != before);
         }
         public string CreateNewDraftsIfNoAny(int desired = 1)
         {
             string subj = string.Empty;
             var mesCount = 0;
-            FollowFolder("Черновики");
+            FollowFolder(FolderType.Drafts);
             try
             {
                 mesCount = AllMessages().GetListElements().Count();
@@ -88,24 +88,24 @@ namespace Repos.UI.Pages
         }
         public void SendMessage(string subject)
         {
-            var draftsBefore = GetMessagesCount("Черновики");
-            FollowFolder("Черновики");
+            var draftsBefore = GetMessagesCount(FolderType.Drafts);
+            FollowFolder(FolderType.Drafts);
             MessagePreview(subject).Click();
             SendEmailButton.Click();
-            Wait.Until(() => GetMessagesCount("Черновики") != draftsBefore);
+            Wait.Until(() => GetMessagesCount(FolderType.Drafts) != draftsBefore);
         }
         public void SendMessageWithAttachment(string subject)
         {
-            var draftsbefore = GetMessagesCount("Черновики");
-            FollowFolder("Черновики");
+            var draftsbefore = GetMessagesCount(FolderType.Drafts);
+            FollowFolder(FolderType.Drafts);
             MessagePreview(subject).Click();
             SelectMessagCheckBox.HoverMouseOver();
 
         }
         public void DeleteFewMessagesWithCheckBoxes(string subject)
         {
-            var draftsbefore = GetMessagesCount("Черновики");
-            FollowFolder("Черновики");
+            var draftsbefore = GetMessagesCount(FolderType.Drafts);
+            FollowFolder(FolderType.Drafts);
             MessagePreview(subject).Click();
             SelectMessagCheckBox.HoverMouseOver();
             SelectMessagCheckBox.Click();
@@ -113,15 +113,15 @@ namespace Repos.UI.Pages
 
         public void DeleteDraft(string subject)
         {
-            var draftsBefore = GetMessagesCount("Черновики");
-            FollowMessage("Черновики", subject);
+            var draftsBefore = GetMessagesCount(FolderType.Drafts);
+            FollowMessage(FolderType.Drafts, subject);
             DeleteEmailButton().Click();
             if (ApproveDeleteButton().IsVisible())
                 ApproveDeleteButton().Click();
 
-            Wait.Until(() => GetMessagesCount("Черновики") != draftsBefore);
+            Wait.Until(() => GetMessagesCount(FolderType.Drafts) != draftsBefore);
         }
-        public void CleanUpFolder(string folder)
+        public void CleanUpFolder(FolderType folder)
         {
             FollowFolder(folder);
             Browser.Instance.ReloadPage();
@@ -132,14 +132,14 @@ namespace Repos.UI.Pages
         #endregion
 
         #region Folders View
-        public void FollowFolder(string folder) => Wait.RetryUntilTrue(() => FoldersMenuOption(folder).Click(), () => FolderSelected(folder).IsVisible());
-        public void FollowMessage(string folder, string subject)
+        public void FollowFolder(FolderType folder) => Wait.RetryUntilTrue(() => FoldersMenuOption(folder.GetDescr()).Click(), () => FolderSelected(folder.GetDescr()).IsVisible());
+        public void FollowMessage(FolderType folder, string subject)
         {
             FollowFolder(folder);
             MessagePreview(subject).Click();
         }
-        public string GetMessagesCount(string folder) => FolderCounter(folder).GetText();
-        public bool CheckMessageInFolder(string folder, string subject, bool isVisible = true)
+        public string GetMessagesCount(FolderType folder) => FolderCounter(folder.GetDescr()).GetText();
+        public bool CheckMessageInFolder(FolderType folder, string subject, bool isVisible = true)
         {
             FollowFolder(folder);
             return isVisible ? MessagePreview(subject).IsVisible() : MessagePreview(subject).IsInvisible();
